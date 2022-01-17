@@ -6,6 +6,7 @@ import com.yuva.employeemanagementapi.service.EmployeeService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import javax.persistence.EntityNotFoundException;
 import java.util.List;
 
 @Service
@@ -31,25 +32,40 @@ public class EmployeeServiceImpl implements EmployeeService {
 
     @Override
     public Employee updateEmployeeById(Long Id,Employee employeeDetails){
-        Employee employee = getEmployeeById(Id);
-        if(employee!=null){
-            employee.setName(employeeDetails.getName());
-            employee.setAge(employeeDetails.getAge());
-            employee.setDesignation(employeeDetails.getDesignation());
-            employeeRepository.save(employee);
-            System.out.println("Employee Details Updated");
+        try{
+            Employee employee = getEmployeeById(Id);
+            System.out.println(employee.getName());
+            if(employee!=null){
+                if(employeeDetails.getName()!=null){
+                    employee.setName(employeeDetails.getName());
+                }
+                if(employeeDetails.getDesignation()!=null){
+                    employee.setDesignation(employeeDetails.getDesignation());
+                }
+                if(employeeDetails.getAge()!=0){
+                    employee.setAge(employeeDetails.getAge());
+                }
+                employeeRepository.save(employee);
+                System.out.println("Employee Details Updated");
+            }
+            return employeeRepository.getById(Id);
+        }catch(EntityNotFoundException e){
+            e.printStackTrace();
+            return null;
         }
-        return employeeRepository.getById(Id);
+
     }
 
     @Override
     public String deleteEmployeeById(Long Id){
-        Employee employee = getEmployeeById(Id);
-        if(employee!=null){
-            System.out.println("Employee Deleted!");
+        try{
+            Employee employee = getEmployeeById(Id);
+            System.out.println(employee.getName());
             employeeRepository.delete(employee);
+            System.out.println("Employee Deleted!");
             return "Employee Deleted!";
+        }catch(EntityNotFoundException e){
+            return "Employee Not Found!";
         }
-        return "Employee Not Found!";
     }
 }
