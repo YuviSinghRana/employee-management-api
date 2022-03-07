@@ -1,11 +1,11 @@
 package com.yuva.employeemanagementapi.model;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import org.hibernate.annotations.CreationTimestamp;
+import org.hibernate.annotations.UpdateTimestamp;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
+import java.time.LocalDateTime;
 
 @Entity(name = "employee")
 @JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
@@ -18,15 +18,26 @@ public class Employee {
     private String name;
     private int age;
     private String Designation;
+    @OneToOne(cascade=CascadeType.ALL)
+    @JoinColumn(name = "passport_id", referencedColumnName = "passport_id")
+    private Passport passport;
+    @UpdateTimestamp
+    @GeneratedValue
+    private LocalDateTime lastUpdated;
+    @CreationTimestamp
+    @GeneratedValue
+    private LocalDateTime createdDate;
+
 
     public Employee() {
     }
 
-
-    public Employee(String name, int age, String designation) {
+    public Employee(String name, int age, String designation, LocalDateTime lastUpdated, LocalDateTime createdDate) {
         this.name = name;
         this.age = age;
         Designation = designation;
+        this.lastUpdated = lastUpdated;
+        this.createdDate = createdDate;
     }
 
     public Long getId() {
@@ -61,6 +72,30 @@ public class Employee {
         Designation = designation;
     }
 
+    public LocalDateTime getlastUpdated() {
+        return lastUpdated;
+    }
+
+    public void setlastUpdated(LocalDateTime lastUpdated) {
+        this.lastUpdated = lastUpdated;
+    }
+
+    public LocalDateTime getCreatedDate() {
+        return createdDate;
+    }
+
+    public void setCreatedDate(LocalDateTime createdDate) {
+        this.createdDate = createdDate;
+    }
+
+    public Passport getPassport() {
+        return passport;
+    }
+
+    public void setPassport(Passport passport) {
+        this.passport = passport;
+    }
+
     @Override
     public String toString() {
         return "Employee{" +
@@ -68,6 +103,9 @@ public class Employee {
                 ", name='" + name + '\'' +
                 ", age=" + age +
                 ", Designation='" + Designation + '\'' +
+                ", passport=" + passport +
+                ", lastUpdated=" + lastUpdated +
+                ", createdDate=" + createdDate +
                 '}';
     }
 }
