@@ -1,129 +1,166 @@
 {
-	"info": {
-		"_postman_id": "a4dfb2c8-40ca-4260-88cf-838a8e423f1e",
-		"name": "Employees",
-		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
-	},
-	"item": [
+	"id": "e0abde6c-e0b7-4a27-cb8b-60280df74170",
+	"name": "Employees",
+	"description": "",
+	"order": [
+		"34d29bd4-43fa-c859-61b3-b6723806a832",
+		"5a9ba5de-832f-52ac-4631-f62525db602a",
+		"3e7968d3-1924-a4ae-03f0-df42bb90ffbb",
+		"57db9b6b-2f65-84ae-a5ac-07850e721eff",
+		"da9fcd96-a294-035b-3dd8-e162b3534858",
+		"c12bbada-cdcf-0d28-b213-b0d8395bc0de",
+		"4d54da8b-28f1-04e2-3240-5ce959e8c7d3"
+	],
+	"folders": [],
+	"folders_order": [],
+	"timestamp": 0,
+	"owner": 0,
+	"public": false,
+	"requests": [
 		{
+			"id": "34d29bd4-43fa-c859-61b3-b6723806a832",
 			"name": "getEmployees",
-			"request": {
-				"method": "GET",
-				"header": [],
-				"url": {
-					"raw": "http://localhost:8080/employee/listEmployees",
-					"protocol": "http",
-					"host": [
-						"localhost"
-					],
-					"port": "8080",
-					"path": [
-						"employee",
-						"listEmployees"
-					]
-				}
-			},
-			"response": []
+			"description": "",
+			"collectionId": "e0abde6c-e0b7-4a27-cb8b-60280df74170",
+			"method": "GET",
+			"headers": "",
+			"data": [],
+			"rawModeData": "",
+			"url": "http://localhost:8080/employee/listEmployees",
+			"responses": [],
+			"pathVariableData": [],
+			"queryParams": [],
+			"headerData": [],
+			"collection_id": "e0abde6c-e0b7-4a27-cb8b-60280df74170"
 		},
 		{
-			"name": "getEmployeeById",
-			"request": {
-				"method": "GET",
-				"header": [],
-				"url": {
-					"raw": "http://localhost:8080/employee/1",
-					"protocol": "http",
-					"host": [
-						"localhost"
-					],
-					"port": "8080",
-					"path": [
-						"employee",
-						"1"
-					]
+			"id": "3e7968d3-1924-a4ae-03f0-df42bb90ffbb",
+			"headers": "Content-Type: application/json\n",
+			"headerData": [
+				{
+					"key": "Content-Type",
+					"value": "application/json",
+					"description": "",
+					"enabled": true
 				}
-			},
-			"response": []
-		},
-		{
+			],
+			"url": "http://localhost:8080/employee/addEmployee",
+			"queryParams": [],
+			"preRequestScript": null,
+			"pathVariables": {},
+			"pathVariableData": [],
+			"method": "POST",
+			"data": [],
+			"dataMode": "raw",
+			"tests": null,
+			"currentHelper": "normal",
+			"helperAttributes": {},
+			"time": 1646765407771,
 			"name": "addEmployee",
-			"request": {
-				"method": "POST",
-				"header": [],
-				"body": {
-					"mode": "raw",
-					"raw": "{\r\n    \"name\": \"Demo\",\r\n    \"age\": 20,\r\n    \"designation\": \"Demo\"\r\n}",
-					"options": {
-						"raw": {
-							"language": "json"
-						}
-					}
-				},
-				"url": {
-					"raw": "http://localhost:8080/employee/addEmployee",
-					"protocol": "http",
-					"host": [
-						"localhost"
-					],
-					"port": "8080",
-					"path": [
-						"employee",
-						"addEmployee"
-					]
-				}
-			},
-			"response": []
+			"description": "",
+			"collectionId": "e0abde6c-e0b7-4a27-cb8b-60280df74170",
+			"responses": [],
+			"rawModeData": "{\r\n    \"name\": \"Dummy\",\r\n    \"age\": 0,\r\n    \"designation\": \"Dummy\",\r\n    \"passport\": {\r\n    \t\"passportNumber\" : \"Dummy\"\r\n    }\r\n}"
 		},
 		{
+			"id": "4d54da8b-28f1-04e2-3240-5ce959e8c7d3",
+			"headers": "",
+			"headerData": [],
+			"url": "http://localhost:8080/passport/8",
+			"queryParams": [],
+			"pathVariables": {},
+			"pathVariableData": [],
+			"preRequestScript": null,
+			"method": "GET",
+			"collectionId": "e0abde6c-e0b7-4a27-cb8b-60280df74170",
+			"data": null,
+			"dataMode": "params",
+			"name": "getPassportById",
+			"description": "",
+			"descriptionFormat": "html",
+			"time": 1646765395059,
+			"version": 2,
+			"responses": [],
+			"tests": null,
+			"currentHelper": "normal",
+			"helperAttributes": {}
+		},
+		{
+			"id": "57db9b6b-2f65-84ae-a5ac-07850e721eff",
 			"name": "updateEmployeeById",
-			"request": {
-				"method": "PUT",
-				"header": [],
-				"body": {
-					"mode": "raw",
-					"raw": "{\r\n    \"age\": 23\r\n}",
-					"options": {
-						"raw": {
-							"language": "json"
-						}
-					}
-				},
-				"url": {
-					"raw": "http://localhost:8080/employee/updateEmployee/5",
-					"protocol": "http",
-					"host": [
-						"localhost"
-					],
-					"port": "8080",
-					"path": [
-						"employee",
-						"updateEmployee",
-						"5"
-					]
-				}
-			},
-			"response": []
+			"description": "",
+			"collectionId": "e0abde6c-e0b7-4a27-cb8b-60280df74170",
+			"method": "PUT",
+			"headers": "",
+			"dataMode": "raw",
+			"data": [],
+			"rawModeData": "{\r\n    \"age\": 23\r\n}",
+			"url": "http://localhost:8080/employee/updateEmployee/5",
+			"responses": [],
+			"pathVariableData": [],
+			"queryParams": [],
+			"headerData": [],
+			"collection_id": "e0abde6c-e0b7-4a27-cb8b-60280df74170"
 		},
 		{
+			"id": "5a9ba5de-832f-52ac-4631-f62525db602a",
+			"name": "getEmployeeById",
+			"description": "",
+			"collectionId": "e0abde6c-e0b7-4a27-cb8b-60280df74170",
+			"method": "GET",
+			"headers": "",
+			"data": [],
+			"rawModeData": "",
+			"url": "http://localhost:8080/employee/1",
+			"responses": [],
+			"pathVariableData": [],
+			"queryParams": [],
+			"headerData": [],
+			"collection_id": "e0abde6c-e0b7-4a27-cb8b-60280df74170"
+		},
+		{
+			"id": "c12bbada-cdcf-0d28-b213-b0d8395bc0de",
+			"headers": "",
+			"headerData": [],
+			"url": "http://localhost:8080/passport/listPassport",
+			"queryParams": [],
+			"pathVariables": {},
+			"pathVariableData": [],
+			"preRequestScript": null,
+			"method": "GET",
+			"collectionId": "e0abde6c-e0b7-4a27-cb8b-60280df74170",
+			"data": null,
+			"dataMode": "params",
+			"name": "getPassports",
+			"description": "",
+			"descriptionFormat": "html",
+			"time": 1646765254983,
+			"version": 2,
+			"responses": [],
+			"tests": null,
+			"currentHelper": "normal",
+			"helperAttributes": {}
+		},
+		{
+			"id": "da9fcd96-a294-035b-3dd8-e162b3534858",
+			"headers": "",
+			"headerData": [],
+			"url": "http://localhost:8080/employee/deleteEmployee/4",
+			"queryParams": [],
+			"preRequestScript": null,
+			"pathVariables": {},
+			"pathVariableData": [],
+			"method": "DELETE",
+			"data": [],
+			"dataMode": "params",
+			"tests": null,
+			"currentHelper": "normal",
+			"helperAttributes": {},
+			"time": 1646644599730,
 			"name": "deleteEmployeeById",
-			"request": {
-				"method": "DELETE",
-				"header": [],
-				"url": {
-					"raw": "http://localhost:8080/employee/deleteEmployee/5",
-					"protocol": "http",
-					"host": [
-						"localhost"
-					],
-					"port": "8080",
-					"path": [
-						"employee",
-						"deleteEmployee",
-						"5"
-					]
-				}
-			},
-			"response": []
+			"description": "",
+			"collectionId": "e0abde6c-e0b7-4a27-cb8b-60280df74170",
+			"responses": []
 		}
 	]
 }

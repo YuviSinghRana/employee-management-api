@@ -1,6 +1,7 @@
 package com.yuva.employeemanagementapi.model;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
 
@@ -20,6 +21,7 @@ public class Employee {
     private String Designation;
     @OneToOne(cascade=CascadeType.ALL)
     @JoinColumn(name = "passport_id", referencedColumnName = "passport_id")
+    @JsonManagedReference
     private Passport passport;
     @UpdateTimestamp
     @GeneratedValue

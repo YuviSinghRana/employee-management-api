@@ -1,5 +1,6 @@
 package com.yuva.employeemanagementapi.model;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
@@ -17,6 +18,7 @@ public class Passport {
     @Column(name = "passport_number")
     private String passportNumber;
     @OneToOne(mappedBy = "passport")
+    @JsonBackReference
     private Employee employee;
     @UpdateTimestamp
     @GeneratedValue
