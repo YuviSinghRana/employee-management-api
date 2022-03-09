@@ -8,53 +8,60 @@ import org.hibernate.annotations.UpdateTimestamp;
 import javax.persistence.*;
 import java.time.LocalDateTime;
 
-@Entity
+@Entity(name = "review")
 @JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
-public class Passport {
+public class Review {
 
     @Id
-    @GeneratedValue
-    @Column(name = "passport_id")
-    private Long passportID;
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    private Long id;
 
-    @Column(name = "passport_number")
-    private String passportNumber;
+    private int rating;
+    private String description;
 
-    @OneToOne(mappedBy = "passport")
+    @ManyToOne
     @JsonBackReference
     private Employee employee;
 
     @UpdateTimestamp
-    @GeneratedValue
     private LocalDateTime lastUpdated;
 
     @CreationTimestamp
-    @GeneratedValue
     private LocalDateTime createdDate;
 
-    public Passport() {
+    public Review() {
     }
 
-    public Passport(String passportNumber, Employee employee, LocalDateTime lastUpdated, LocalDateTime createdDate) {
-        this.passportNumber = passportNumber;
+    public Review(int rating, String description, Employee employee, LocalDateTime lastUpdated, LocalDateTime createdDate) {
+        this.rating = rating;
+        this.description = description;
+        this.employee = employee;
         this.lastUpdated = lastUpdated;
         this.createdDate = createdDate;
     }
 
-    public Long getPassportID() {
-        return passportID;
+    public Long getId() {
+        return id;
     }
 
-    public void setPassportID(Long passportID) {
-        this.passportID = passportID;
+    public void setId(Long id) {
+        this.id = id;
     }
 
-    public String getPassportNumber() {
-        return passportNumber;
+    public int getRating() {
+        return rating;
     }
 
-    public void setPassportNumber(String passportNumber) {
-        this.passportNumber = passportNumber;
+    public void setRating(int rating) {
+        this.rating = rating;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
     }
 
     public Employee getEmployee() {
@@ -65,11 +72,11 @@ public class Passport {
         this.employee = employee;
     }
 
-    public LocalDateTime getlastUpdated() {
+    public LocalDateTime getLastUpdated() {
         return lastUpdated;
     }
 
-    public void setlastUpdated(LocalDateTime lastUpdated) {
+    public void setLastUpdated(LocalDateTime lastUpdated) {
         this.lastUpdated = lastUpdated;
     }
 
@@ -83,13 +90,11 @@ public class Passport {
 
     @Override
     public String toString() {
-        return "Passport{" +
-                "passportID=" + passportID +
-                ", passportNumber='" + passportNumber + '\'' +
-                ", employee=" + employee +
+        return "Review{" +
+                "rating=" + rating +
+                ", description='" + description + '\'' +
                 ", lastUpdated=" + lastUpdated +
                 ", createdDate=" + createdDate +
                 '}';
     }
 }
-

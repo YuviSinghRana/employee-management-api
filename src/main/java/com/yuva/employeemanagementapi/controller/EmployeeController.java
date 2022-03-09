@@ -1,7 +1,6 @@
 package com.yuva.employeemanagementapi.controller;
 
 import com.yuva.employeemanagementapi.model.Employee;
-import com.yuva.employeemanagementapi.repository.EmployeeRepository;
 import com.yuva.employeemanagementapi.service.EmployeeService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -14,7 +13,6 @@ public class EmployeeController {
 
     @Autowired
     private EmployeeService employeeService;
-
 
     @GetMapping("/listEmployees")
     public List<Employee> getAllEmployees(){

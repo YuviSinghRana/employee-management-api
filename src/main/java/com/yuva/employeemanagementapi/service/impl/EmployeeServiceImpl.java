@@ -1,7 +1,9 @@
 package com.yuva.employeemanagementapi.service.impl;
 
 import com.yuva.employeemanagementapi.model.Employee;
+import com.yuva.employeemanagementapi.model.Review;
 import com.yuva.employeemanagementapi.repository.EmployeeRepository;
+import com.yuva.employeemanagementapi.repository.ReviewRepository;
 import com.yuva.employeemanagementapi.service.EmployeeService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -14,6 +16,9 @@ public class EmployeeServiceImpl implements EmployeeService {
 
     @Autowired
     private EmployeeRepository employeeRepository;
+
+    @Autowired
+    private ReviewRepository reviewRepository;
 
     @Override
     public List<Employee> getAllEmployees() {
@@ -53,7 +58,6 @@ public class EmployeeServiceImpl implements EmployeeService {
             e.printStackTrace();
             return null;
         }
-
     }
 
     @Override

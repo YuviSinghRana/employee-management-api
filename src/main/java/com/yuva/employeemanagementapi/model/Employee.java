@@ -1,5 +1,6 @@
 package com.yuva.employeemanagementapi.model;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 import org.hibernate.annotations.CreationTimestamp;
@@ -7,6 +8,7 @@ import org.hibernate.annotations.UpdateTimestamp;
 
 import javax.persistence.*;
 import java.time.LocalDateTime;
+import java.util.List;
 
 @Entity(name = "employee")
 @JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
@@ -19,13 +21,20 @@ public class Employee {
     private String name;
     private int age;
     private String Designation;
+
     @OneToOne(cascade=CascadeType.ALL)
     @JoinColumn(name = "passport_id", referencedColumnName = "passport_id")
     @JsonManagedReference
     private Passport passport;
+
+    @OneToMany(mappedBy = "employee", cascade = CascadeType.ALL)
+    @JsonManagedReference
+    private List<Review> reviews;
+
     @UpdateTimestamp
     @GeneratedValue
     private LocalDateTime lastUpdated;
+
     @CreationTimestamp
     @GeneratedValue
     private LocalDateTime createdDate;
@@ -34,10 +43,12 @@ public class Employee {
     public Employee() {
     }
 
-    public Employee(String name, int age, String designation, LocalDateTime lastUpdated, LocalDateTime createdDate) {
+    public Employee(String name, int age, String designation, Passport passport, List<Review> reviews, LocalDateTime lastUpdated, LocalDateTime createdDate) {
         this.name = name;
         this.age = age;
         Designation = designation;
+        this.passport = passport;
+        this.reviews = reviews;
         this.lastUpdated = lastUpdated;
         this.createdDate = createdDate;
     }
@@ -74,11 +85,23 @@ public class Employee {
         Designation = designation;
     }
 
-    public LocalDateTime getlastUpdated() {
+    public List<Review> getReviews() {
+        return reviews;
+    }
+
+    public void addReview(Review review) {
+        this.reviews.add(review);
+    }
+
+    public void removeReview(Review review) {
+        this.reviews.remove(review);
+    }
+
+    public LocalDateTime getLastUpdated() {
         return lastUpdated;
     }
 
-    public void setlastUpdated(LocalDateTime lastUpdated) {
+    public void setLastUpdated(LocalDateTime lastUpdated) {
         this.lastUpdated = lastUpdated;
     }
 
@@ -101,11 +124,11 @@ public class Employee {
     @Override
     public String toString() {
         return "Employee{" +
-                "id=" + id +
-                ", name='" + name + '\'' +
+                "name='" + name + '\'' +
                 ", age=" + age +
                 ", Designation='" + Designation + '\'' +
                 ", passport=" + passport +
+                ", reviews=" + reviews +
                 ", lastUpdated=" + lastUpdated +
                 ", createdDate=" + createdDate +
                 '}';
