@@ -30,6 +30,12 @@ public class Employee {
     @JsonManagedReference
     private List<Review> reviews;
 
+    @ManyToMany
+    @JoinTable(name="employee_departments",
+    joinColumns = @JoinColumn(name = "employee_id"),
+    inverseJoinColumns = @JoinColumn(name = "department_id"))
+    private List<Department> departments;
+
     @UpdateTimestamp
     @GeneratedValue
     private LocalDateTime lastUpdated;
