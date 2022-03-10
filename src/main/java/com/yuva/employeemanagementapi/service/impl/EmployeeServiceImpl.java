@@ -1,7 +1,6 @@
 package com.yuva.employeemanagementapi.service.impl;
 
 import com.yuva.employeemanagementapi.model.Employee;
-import com.yuva.employeemanagementapi.model.Review;
 import com.yuva.employeemanagementapi.repository.EmployeeRepository;
 import com.yuva.employeemanagementapi.repository.ReviewRepository;
 import com.yuva.employeemanagementapi.service.EmployeeService;
@@ -16,9 +15,6 @@ public class EmployeeServiceImpl implements EmployeeService {
 
     @Autowired
     private EmployeeRepository employeeRepository;
-
-    @Autowired
-    private ReviewRepository reviewRepository;
 
     @Override
     public List<Employee> getAllEmployees() {

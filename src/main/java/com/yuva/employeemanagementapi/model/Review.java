@@ -19,7 +19,7 @@ public class Review {
     private int rating;
     private String description;
 
-    @ManyToOne
+    @ManyToOne(cascade = CascadeType.ALL)
     @JsonBackReference
     private Employee employee;
 
