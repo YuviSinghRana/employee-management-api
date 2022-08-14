@@ -26,9 +26,9 @@ public class Employee {
     @JsonManagedReference
     private Passport passport;
 
-    @OneToMany(mappedBy = "employee", cascade = CascadeType.ALL)
-    @JsonManagedReference
-    private List<Review> reviews;
+//    @OneToMany(mappedBy = "employee", cascade = CascadeType.ALL)
+//    @JsonManagedReference
+//    private List<Review> reviews;
 
     @ManyToMany
     @JoinTable(name="employee_departments",
@@ -48,12 +48,11 @@ public class Employee {
     public Employee() {
     }
 
-    public Employee(String name, int age, String designation, Passport passport, List<Review> reviews, LocalDateTime lastUpdated, LocalDateTime createdDate) {
+    public Employee(String name, int age, String designation, Passport passport, LocalDateTime lastUpdated, LocalDateTime createdDate) {
         this.name = name;
         this.age = age;
         Designation = designation;
         this.passport = passport;
-        this.reviews = reviews;
         this.lastUpdated = lastUpdated;
         this.createdDate = createdDate;
     }
@@ -90,18 +89,6 @@ public class Employee {
         Designation = designation;
     }
 
-    public List<Review> getReviews() {
-        return reviews;
-    }
-
-    public void addReview(Review review) {
-        this.reviews.add(review);
-    }
-
-    public void removeReview(Review review) {
-        this.reviews.remove(review);
-    }
-
     public LocalDateTime getLastUpdated() {
         return lastUpdated;
     }
@@ -133,7 +120,6 @@ public class Employee {
                 ", age=" + age +
                 ", Designation='" + Designation + '\'' +
                 ", passport=" + passport +
-                ", reviews=" + reviews +
                 ", lastUpdated=" + lastUpdated +
                 ", createdDate=" + createdDate +
                 '}';
